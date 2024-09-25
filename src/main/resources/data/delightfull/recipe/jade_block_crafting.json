@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "jade",
+  "ingredients": [
+    {
+      "item": "delightfull:jade_gem"
+    },
+    {
+      "item": "delightfull:jade_gem"
+    },
+    {
+      "item": "delightfull:jade_gem"
+    },
+    {
+      "item": "delightfull:jade_gem"
+    },
+    {
+      "item": "delightfull:jade_gem"
+    },
+    {
+      "item": "delightfull:jade_gem"
+    },
+    {
+      "item": "delightfull:jade_gem"
+    },
+    {
+      "item": "delightfull:jade_gem"
+    },
+    {
+      "item": "delightfull:jade_gem"
+    }
+  ],
+  "result": {
+    "id": "delightfull:jade_block",
+    "count": 1
+  }
+}
