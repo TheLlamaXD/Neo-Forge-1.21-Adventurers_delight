@@ -1,0 +1,48 @@
+{
+
+  "item.delightfull.jade_gem": "Jade Gem",
+  "item.delightfull.shade_horn": "Shade Horn",
+  "item.delightfull.spirit_spawn_egg": "Shade Spawn Egg",
+  "item.delightfull.jade_sword": "Jade Katana",
+  "item.delightfull.shuriken_throwable": "Shuriken",
+
+
+
+  "block.delightfull.jade_block": "Jade Roof Tiles",
+  "block.delightfull.jade_block_stairs": "Jade Roof Stairs",
+  "block.delightfull.jade_block_slab": "Jade Roof Slab",
+  "block.delightfull.jade_polished_block": "Polished Jade Tiles",
+  "block.delightfull.jade_polished_block_slab": "Polished Jade Tiles Slab",
+  "block.delightfull.jade_polished_block_stairs": "Polished Jade Tiles Stairs",
+  "block.delightfull.jade_tiles_block": "Jade Tiles",
+  "block.delightfull.jade_tiles_block_slab": "Jade Tiles Slab",
+  "block.delightfull.jade_tiles_block_stairs": "Jade Tiles Stairs",
+  "block.delightfull.paper_wall_block": "Thick Paper Wall",
+  "block.delightfull.thin_paper_wall_block": "Thin Paper Wall",
+  "block.delightfull.japanese_lantern_block": "Paper Lantern",
+
+
+  "tooltip.delightfull.jade_sword": "+1 §eAttack Reach§r",
+
+
+
+
+
+  "entity.delightfull.spirit": "Shade",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  "itemGroup.delightfull.adventurers_delight_tab": "Adventurer's Delight"
+}

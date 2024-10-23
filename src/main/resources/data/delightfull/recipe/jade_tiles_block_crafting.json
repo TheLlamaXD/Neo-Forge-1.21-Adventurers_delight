@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "jade",
+  "pattern": [
+    "SS",
+    "SS"
+  ],
+  "key": {
+    "S": {
+      "item": "delightfull:jade_polished_block"
+    }
+  },
+  "result": {
+    "id": "delightfull:jade_tiles_block",
+    "count": 4
+  }
+}
