@@ -33,8 +33,15 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModBlocks.JADE_POLISHED_BLOCK_SLAB);
                         pOutput.accept(ModBlocks.PAPER_WALL_BLOCK);
                         pOutput.accept(ModBlocks.THIN_PAPER_WALL_BLOCK);
+                        pOutput.accept(ModBlocks.FANCY_SAND);
+                        pOutput.accept(ModBlocks.JAPANESE_RUG_BLOCK);
+                        pOutput.accept(ModBlocks.JAPANESE_RUG);
+                        pOutput.accept(ModBlocks.JAPANESE_LANTERN_BLOCK_DEFERRED_BLOCK);
                         pOutput.accept(ModItems.JADE_GEM);
+                        pOutput.accept(ModItems.SHADE_HORN);
                         pOutput.accept(ModItems.SPIRIT_SPAWN_EGG);
+                        pOutput.accept(ModItems.JADE_SWORD);
+                        pOutput.accept(ModItems.SHURIKEN_THROWABLE);
                     })
 
                     .build());

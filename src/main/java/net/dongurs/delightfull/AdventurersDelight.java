@@ -4,6 +4,7 @@ import net.dongurs.delightfull.block.ModBlocks;
 import net.dongurs.delightfull.effects.ModEffects;
 import net.dongurs.delightfull.entity.ModEntities;
 import net.dongurs.delightfull.entity.client.SamuraiSpiritRenderer;
+import net.dongurs.delightfull.entity.client.shuriken.ModEntityRenderers;
 import net.dongurs.delightfull.item.ModCreativeModeTabs;
 import net.dongurs.delightfull.item.ModItems;
 import net.minecraft.client.renderer.entity.EntityRenderers;
@@ -35,6 +36,9 @@ public class AdventurersDelight {
     private static final Logger LOGGER = LogUtils.getLogger();
 
 
+
+
+
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
     public AdventurersDelight(IEventBus modEventBus, ModContainer modContainer){
@@ -46,6 +50,11 @@ public class AdventurersDelight {
         ModBlocks.register(modEventBus);
         ModEntities.register(modEventBus);
         ModEffects.register(modEventBus);
+        ModEntities.REGISTRY.register(modEventBus);
+
+
+
+
 
 
 

@@ -1,5 +1,6 @@
 package net.dongurs.delightfull.entity.custom;
 
+import net.dongurs.delightfull.effects.ModEffects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -33,7 +34,10 @@ import javax.annotation.Nullable;
 import java.util.*;
 
 
-public class SamuraiSpiritEntity extends FlyingMob {
+public class SamuraiSpiritEntity extends FlyingMob{
+
+
+
 
     public final AnimationState idleAnimationState = new AnimationState();
     public final AnimationState flyingAnimationState = new AnimationState();
@@ -42,6 +46,18 @@ public class SamuraiSpiritEntity extends FlyingMob {
     protected static final EntityDataAccessor<Byte> DATA_FLAGS_ID;
     @Nullable
     private BlockPos boundOrigin;
+
+    private LivingEntity hauntingTarget;
+
+
+    private void setHauntingTarget(@Nullable LivingEntity hauntingTargetIn){
+        this.hauntingTarget = hauntingTargetIn;
+    }
+
+    @Nullable
+    public LivingEntity getHauntingTarget(){
+        return hauntingTarget;
+    }
 
 
     public SamuraiSpiritEntity(EntityType<? extends FlyingMob> entityType, Level level) {
@@ -69,7 +85,7 @@ public class SamuraiSpiritEntity extends FlyingMob {
         this.goalSelector.addGoal(2,   new SamuraiSpiritRandomMoveGoal());
         this.goalSelector.addGoal(1,   new SamuraiSpiritChargeAttackGoal());
         this.goalSelector.addGoal(1,   new ApplyStrengthToNearbyZombiesGoal(this,20));
-       // this.goalSelector.addGoal(6, new ApplyWeaknessToNearbyPlayerGoal(this ,20));
+        //this.goalSelector.addGoal(6, new ApplyWeaknessToNearbyPlayerGoal(this ,20));
 
 
 
@@ -207,10 +223,6 @@ public class SamuraiSpiritEntity extends FlyingMob {
 
 
 
-
-
-
-
     class SamuraiSpiritMoveControl extends MoveControl {
         public SamuraiSpiritMoveControl(SamuraiSpiritEntity samuraiSpiritEntity) {
             super(samuraiSpiritEntity);
@@ -287,8 +299,8 @@ public class SamuraiSpiritEntity extends FlyingMob {
         private static final Random random = new Random();
         private int cooldownTicks;
 
-        // Map to keep track of particles for each zombie
-        private final Map<Zombie, ParticleTracker> particleTrackers = new HashMap<>();
+
+
 
         public ApplyStrengthToNearbyZombiesGoal(Mob mob, double detectionRange) {
             this.mob = mob;
@@ -316,20 +328,14 @@ public class SamuraiSpiritEntity extends FlyingMob {
                 if (entity instanceof Zombie) {
                     Zombie zombie = (Zombie) entity;
 
-                    // Apply Strength effect to the zombie
-                    MobEffectInstance strengthEffect = new MobEffectInstance(MobEffects.DAMAGE_BOOST, 200, 1); // 10 seconds, level 1
+                    // Apply Haunted effect to the zombie
+                    MobEffectInstance strengthEffect = new MobEffectInstance(ModEffects.HAUNTED_EFFECT, 500, 1); // 10 seconds, level 1
                     zombie.addEffect(strengthEffect);
-                    mob.playSound(SoundEvents.PLAYER_LEVELUP, 0.8F, 1.0F);
+
 
                     // Ensure the code runs on the server side to spawn particles
                     if (!zombie.level().isClientSide()) {
                         ServerLevel serverLevel = (ServerLevel) zombie.level();
-
-                        // Get or create the particle tracker for this zombie
-                        ParticleTracker tracker = particleTrackers.computeIfAbsent(zombie, k -> new ParticleTracker());
-
-                        // Update particle positions and spawn them
-                        tracker.updateParticles(zombie, serverLevel);
 
                         // Set a random cooldown between 100 and 300 ticks (5 to 15 seconds)
                         cooldownTicks = 100 + random.nextInt(200);
@@ -339,31 +345,7 @@ public class SamuraiSpiritEntity extends FlyingMob {
             }
         }
 
-        private static class ParticleTracker {
-            private static final int PARTICLE_COUNT = 10;
 
-            public void updateParticles(Zombie zombie, ServerLevel serverLevel) {
-                double x = zombie.getX();
-                double y = zombie.getY() + zombie.getBbHeight() / 2.0;
-                double z = zombie.getZ();
-
-                for (int i = 0; i < PARTICLE_COUNT; i++) {
-                    double offsetX = random.nextGaussian() * 0.2;
-                    double offsetY = random.nextGaussian() * 0.2;
-                    double offsetZ = random.nextGaussian() * 0.2;
-
-                    serverLevel.sendParticles(
-                            ParticleTypes.TRIAL_SPAWNER_DETECTED_PLAYER, // The type of particle
-                            x + offsetX,                 // X position of the particle
-                            y + offsetY,                 // Y position of the particle
-                            z + offsetZ,                 // Z position of the particle
-                            1,                            // Number of particles per spawn call
-                            0, 0, 0,                     // X, Y, Z speed (0 means stationary)
-                            0.1                          // Particle speed
-                    );
-                }
-            }
-        }
     }
 
     public class ApplyWeaknessToNearbyPlayerGoal extends Goal {

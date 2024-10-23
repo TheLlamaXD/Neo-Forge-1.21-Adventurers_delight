@@ -5,8 +5,9 @@ import net.dongurs.delightfull.entity.custom.SamuraiSpiritEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.FlyingMob;
 
-public class SamuraiSpiritRenderer extends MobRenderer<SamuraiSpiritEntity, SamuraiSpiritModel> {
+public class SamuraiSpiritRenderer extends MobRenderer<SamuraiSpiritEntity, SamuraiSpiritModel<FlyingMob>> {
     // Define how many frames the animation has
     private static final int TOTAL_FRAMES = 7;  // for example, 4 frames
     // Define the duration for each frame in ticks
@@ -14,8 +15,10 @@ public class SamuraiSpiritRenderer extends MobRenderer<SamuraiSpiritEntity, Samu
     // Total duration for one full animation cycle
     private static final int ANIMATION_DURATION = TOTAL_FRAMES * FRAME_DURATION;
 
+
     public SamuraiSpiritRenderer(EntityRendererProvider.Context pContext) {
         super(pContext, new SamuraiSpiritModel(pContext.bakeLayer(ModModelLayers.SPIRIT)), 0.5f);
+        //this.addLayer(new SpiritPowerLayer(this, pContext.getModelSet()));
     }
 
     @Override

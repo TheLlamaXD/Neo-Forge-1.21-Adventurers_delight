@@ -1,6 +1,7 @@
 package net.dongurs.delightfull.block;
 
 import net.dongurs.delightfull.AdventurersDelight;
+import net.dongurs.delightfull.block.fancy_sand.FancySandBlock;
 import net.dongurs.delightfull.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -26,6 +27,10 @@ public class ModBlocks {
 
 
 
+
+
+
+
     public static final DeferredBlock<Block> JADE_BLOCK = registerBlock("jade_block",
             ()-> new Block(BlockBehaviour.Properties.of().sound(NETHER_BRICKS).strength(4f,4f).requiresCorrectToolForDrops()));
 
@@ -43,11 +48,21 @@ public class ModBlocks {
 
 
     public static final DeferredBlock<Block> PAPER_WALL_BLOCK = registerBlock("paper_wall_block",
-            ()-> new Block(BlockBehaviour.Properties.of().sound(BAMBOO_WOOD).strength(1f,0.5f).requiresCorrectToolForDrops()));
+            ()-> new Block(BlockBehaviour.Properties.of().sound(BAMBOO_WOOD).strength(0.75f,0.5f)));
+
+
+    public static final DeferredBlock<CarpetBlock> JAPANESE_RUG = registerBlock("japanese_rug",
+            ()-> new CarpetBlock(BlockBehaviour.Properties.of().sound(WOOL).strength(0.5f,0.25f)));
+
+    public static final DeferredBlock<FancySandBlock> FANCY_SAND = registerBlock("fancy_sand",
+            FancySandBlock::new);
+
+    public static final DeferredBlock<Block> JAPANESE_RUG_BLOCK = registerBlock("japanese_rug_block",
+            ()-> new Block(BlockBehaviour.Properties.of().sound(WOOL).strength(0.5f,0.25f)));
 
 
     public static final DeferredBlock<Block> THIN_PAPER_WALL_BLOCK = registerBlock("thin_paper_wall_block",
-            ()-> new IronBarsBlock(BlockBehaviour.Properties.of().sound(BAMBOO_WOOD).strength(1f,0.5f).requiresCorrectToolForDrops()));
+            ()-> new IronBarsBlock(BlockBehaviour.Properties.of().sound(BAMBOO_WOOD).strength(0.5f,0.5f)));
 
 
 
@@ -74,15 +89,30 @@ public class ModBlocks {
 
 
 
+
+
     public static final DeferredBlock<Block> JADE_TILES_BLOCK = registerBlock("jade_tiles_block",
             ()-> new Block(BlockBehaviour.Properties.of().sound(NETHER_BRICKS).strength(4f,4f).requiresCorrectToolForDrops()));
-
+    
     public static final DeferredBlock<Block> JADE_TILES_BLOCK_STAIRS = registerBlock("jade_tiles_block_stairs",
             ()-> new StairBlock(ModBlocks.JADE_BLOCK.get().defaultBlockState(),
                     BlockBehaviour.Properties.of().sound(NETHER_BRICKS).strength(4f,4f).requiresCorrectToolForDrops()));
 
     public static final DeferredBlock<Block> JADE_TILES_BLOCK_SLAB = registerBlock("jade_tiles_block_slab",
             ()-> new SlabBlock(BlockBehaviour.Properties.of().sound(NETHER_BRICKS).strength(4f,4f).requiresCorrectToolForDrops()));
+
+
+    public static final DeferredBlock<JapaneseLanternBlock> JAPANESE_LANTERN_BLOCK_DEFERRED_BLOCK = registerBlock("japanese_lantern_block",
+            ()-> new JapaneseLanternBlock(BlockBehaviour.Properties.of()
+                    .sound(LANTERN)
+                    .strength(0.5f,0.5f)
+                    .requiresCorrectToolForDrops().noCollission()
+                    .lightLevel( state -> 10)));
+
+
+
+
+
 
 
 

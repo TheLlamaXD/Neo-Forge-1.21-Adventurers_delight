@@ -10,9 +10,10 @@ import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.FlyingMob;
 
 
-public class SamuraiSpiritModel extends HierarchicalModel<SamuraiSpiritEntity> {
+public class SamuraiSpiritModel<S extends FlyingMob> extends HierarchicalModel<SamuraiSpiritEntity> {
 
 
     private final ModelPart wholeEntity;
@@ -20,7 +21,7 @@ public class SamuraiSpiritModel extends HierarchicalModel<SamuraiSpiritEntity> {
     private final ModelPart onlyHead;
 
      final ModelPart handRight;
-    private final ModelPart handLeft;
+     final ModelPart handLeft;
 
     public SamuraiSpiritModel(ModelPart root) {
         this.wholeEntity = root.getChild("wholeEntity");
