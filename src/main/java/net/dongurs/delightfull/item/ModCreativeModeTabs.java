@@ -39,7 +39,9 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModBlocks.JAPANESE_LANTERN_BLOCK_DEFERRED_BLOCK);
                         pOutput.accept(ModItems.JADE_GEM);
                         pOutput.accept(ModItems.SHADE_HORN);
+                        pOutput.accept(ModItems.SAMURAI_KEY);
                         pOutput.accept(ModItems.SPIRIT_SPAWN_EGG);
+                        pOutput.accept(ModItems.KOI_SPAWN_EGG);
                         pOutput.accept(ModItems.JADE_SWORD);
                         pOutput.accept(ModItems.SHURIKEN_THROWABLE);
                     })

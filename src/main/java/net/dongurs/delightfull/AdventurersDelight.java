@@ -3,8 +3,8 @@ package net.dongurs.delightfull;
 import net.dongurs.delightfull.block.ModBlocks;
 import net.dongurs.delightfull.effects.ModEffects;
 import net.dongurs.delightfull.entity.ModEntities;
-import net.dongurs.delightfull.entity.client.SamuraiSpiritRenderer;
-import net.dongurs.delightfull.entity.client.shuriken.ModEntityRenderers;
+import net.dongurs.delightfull.entity.client.koi.KoiRenderer;
+import net.dongurs.delightfull.entity.client.spirit.SamuraiSpiritRenderer;
 import net.dongurs.delightfull.item.ModCreativeModeTabs;
 import net.dongurs.delightfull.item.ModItems;
 import net.minecraft.client.renderer.entity.EntityRenderers;
@@ -113,6 +113,7 @@ public class AdventurersDelight {
         public static void onClientSetup(FMLClientSetupEvent event) {
 
             EntityRenderers.register(ModEntities.SPIRIT.get(), SamuraiSpiritRenderer::new);
+            EntityRenderers.register(ModEntities.KOI.get(), KoiRenderer::new);
 
         }
     }

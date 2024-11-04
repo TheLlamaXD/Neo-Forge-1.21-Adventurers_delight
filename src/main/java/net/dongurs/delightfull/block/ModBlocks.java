@@ -30,9 +30,9 @@ public class ModBlocks {
 
 
 
-
     public static final DeferredBlock<Block> JADE_BLOCK = registerBlock("jade_block",
             ()-> new Block(BlockBehaviour.Properties.of().sound(NETHER_BRICKS).strength(4f,4f).requiresCorrectToolForDrops()));
+
 
     public static final DeferredBlock<Block> JADE_BLOCK_STAIRS = registerBlock("jade_block_stairs",
             ()-> new StairBlock(ModBlocks.JADE_BLOCK.get().defaultBlockState(),
@@ -47,8 +47,12 @@ public class ModBlocks {
 
 
 
-    public static final DeferredBlock<Block> PAPER_WALL_BLOCK = registerBlock("paper_wall_block",
-            ()-> new Block(BlockBehaviour.Properties.of().sound(BAMBOO_WOOD).strength(0.75f,0.5f)));
+    public static final DeferredBlock<SeethroughtBlock> PAPER_WALL_BLOCK = registerBlock("paper_wall_block",
+            ()-> new SeethroughtBlock());
+
+    public static final DeferredBlock<Block> THIN_PAPER_WALL_BLOCK = registerBlock("thin_paper_wall_block",
+            ()-> new IronBarsBlock(BlockBehaviour.Properties.of().sound(BAMBOO_WOOD).strength(0.5f,0.5f)));
+
 
 
     public static final DeferredBlock<CarpetBlock> JAPANESE_RUG = registerBlock("japanese_rug",
@@ -61,8 +65,6 @@ public class ModBlocks {
             ()-> new Block(BlockBehaviour.Properties.of().sound(WOOL).strength(0.5f,0.25f)));
 
 
-    public static final DeferredBlock<Block> THIN_PAPER_WALL_BLOCK = registerBlock("thin_paper_wall_block",
-            ()-> new IronBarsBlock(BlockBehaviour.Properties.of().sound(BAMBOO_WOOD).strength(0.5f,0.5f)));
 
 
 
@@ -107,7 +109,8 @@ public class ModBlocks {
                     .sound(LANTERN)
                     .strength(0.5f,0.5f)
                     .requiresCorrectToolForDrops().noCollission()
-                    .lightLevel( state -> 10)));
+                    .lightLevel( state -> 15)));
+
 
 
 

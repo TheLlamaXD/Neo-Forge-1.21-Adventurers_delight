@@ -4,19 +4,19 @@ import net.dongurs.delightfull.entity.ModEntities;
 import net.dongurs.delightfull.item.ModItems;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AnimationState;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.ItemSupplier;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -196,8 +196,20 @@ public class ShurikenProjectileEntity extends AbstractArrow implements ItemSuppl
 
      */
 
-    public static ShurikenProjectileEntity shoot(Level world, LivingEntity entity, RandomSource source, float pullingPower) {
-        return shoot(world, entity, source, pullingPower * 1f, 4, 0);
+    public static ShurikenProjectileEntity shoot(Level world, LivingEntity entity, RandomSource source) {
+        return shoot(world, entity, source, 1f, 4, 0);
+    }
+    public void shootFromRotation(LivingEntity shooter, Projectile projectile, int index, float velocity, float inaccuracy, float angle, @Nullable LivingEntity target) {
+        projectile.shootFromRotation(shooter, shooter.getXRot(), shooter.getYRot() + angle, 0.0F, velocity, inaccuracy);
+    }
+
+    public void shootFromRotation(Entity shooter, float x, float y, float z, float velocity, float inaccuracy) {
+        float f = -Mth.sin(y * 0.017453292F) * Mth.cos(x * 0.017453292F);
+        float f1 = -Mth.sin((x + z) * 0.017453292F);
+        float f2 = Mth.cos(y * 0.017453292F) * Mth.cos(x * 0.017453292F);
+        this.shoot((double)f, (double)f1, (double)f2, velocity, inaccuracy);
+        Vec3 vec3 = shooter.getKnownMovement();
+        this.setDeltaMovement(this.getDeltaMovement().add(vec3.x, shooter.onGround() ? 0.0 : vec3.y, vec3.z));
     }
 
     public static ShurikenProjectileEntity shoot(Level world, LivingEntity entity, RandomSource random, float power, double damage, int knockback) {
@@ -207,13 +219,28 @@ public class ShurikenProjectileEntity extends AbstractArrow implements ItemSuppl
         entityarrow.setCritArrow(false);
         entityarrow.setBaseDamage(damage);
         entityarrow.setKnockback(knockback);
-        entityarrow.pickup = Pickup.ALLOWED; // Ensure pickup is allowed
+        entityarrow.pickup = Pickup.ALLOWED;
         world.addFreshEntity(entityarrow);
-        world.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
-                BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("item.trident.throw")),
-                SoundSource.PLAYERS, 1, 1f / (random.nextFloat() * 0.5f + 1) + (power / 2));
+        world.playSound(null, entity.getX(), entity.getY(), entity.getZ(), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("item.trident.throw")), SoundSource.PLAYERS, 1, 1f / (random.nextFloat() * 0.5f + 1) + (power / 2));
         return entityarrow;
     }
+
+
+    public static ShurikenProjectileEntity shoot(LivingEntity entity, LivingEntity target) {
+        ShurikenProjectileEntity entityarrow = new ShurikenProjectileEntity(ModEntities.SHURIKEN.get(), entity, entity.level(), null);
+        double dx = target.getX() - entity.getX();
+        double dy = target.getY() + target.getEyeHeight() - 1.1;
+        double dz = target.getZ() - entity.getZ();
+        entityarrow.shoot(dx, dy - entityarrow.getY() + Math.hypot(dx, dz) * 0.2F, dz, 1f * 2, 12.0F);
+        entityarrow.setSilent(true);
+        entityarrow.setBaseDamage(4);
+        entityarrow.setKnockback(0);
+        entityarrow.setCritArrow(false);
+        entity.level().addFreshEntity(entityarrow);
+        entity.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("item.trident.throw")), SoundSource.PLAYERS, 1, 1f / (RandomSource.create().nextFloat() * 0.5f + 1));
+        return entityarrow;
+    }
+
 
 
 

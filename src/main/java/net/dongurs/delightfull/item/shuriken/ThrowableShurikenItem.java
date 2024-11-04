@@ -20,8 +20,8 @@ import net.minecraft.server.level.ServerLevel;
     public class ThrowableShurikenItem extends Item {
         public ThrowableShurikenItem() {
             super(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON)
-                    .attributes(ItemAttributeModifiers.builder().add(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_ID, 2, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
-                            .add(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_ID, -3, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND).build()));
+                    .attributes(ItemAttributeModifiers.builder().add(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_ID, 3, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
+                            .add(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_ID, -2.6, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND).build()));
         }
 
         @Override
@@ -47,12 +47,9 @@ import net.minecraft.server.level.ServerLevel;
         @Override
         public void releaseUsing(ItemStack itemstack, Level world, LivingEntity entity, int time) {
             if (!world.isClientSide() && entity instanceof ServerPlayer player) {
-                float pullingPower = BowItem.getPowerForTime(this.getUseDuration(itemstack, player) - time);
-                if (pullingPower < 0.1)
-                    return;
                 ItemStack stack = findAmmo(player);
                 if (player.getAbilities().instabuild || stack != ItemStack.EMPTY) {
-                    ShurikenProjectileEntity projectile = ShurikenProjectileEntity.shoot(world, entity, world.getRandom(), pullingPower);
+                    ShurikenProjectileEntity projectile = ShurikenProjectileEntity.shoot(world , entity ,world.getRandom());
                     if (player.getAbilities().instabuild) {
                         projectile.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
                     } else {

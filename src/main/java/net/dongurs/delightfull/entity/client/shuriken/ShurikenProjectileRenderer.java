@@ -14,6 +14,8 @@ import net.minecraft.util.Mth;
 
 public class ShurikenProjectileRenderer extends EntityRenderer<ShurikenProjectileEntity> {
 
+    private float randomRotation = (float) (-20+Math.random()*40);
+
     private static final ResourceLocation texture = ResourceLocation.parse("delightfull:textures/entity/shuriken_model_texture.png");
     private final ShurikenProjectileModel model;
 
@@ -26,8 +28,21 @@ public class ShurikenProjectileRenderer extends EntityRenderer<ShurikenProjectil
     public void render(ShurikenProjectileEntity entityIn, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource bufferIn, int packedLightIn) {
         VertexConsumer vb = bufferIn.getBuffer(RenderType.entityCutout(this.getTextureLocation(entityIn)));
         poseStack.pushPose();
-        poseStack.mulPose(Axis.YP.rotationDegrees(Mth.lerp(partialTicks, entityIn.yRotO, entityIn.getYRot()) - 90));
-        poseStack.mulPose(Axis.ZP.rotationDegrees(90 + Mth.lerp(partialTicks, entityIn.xRotO, entityIn.getXRot())));
+
+
+        if (entityIn.inGround()){
+            poseStack.mulPose(Axis.XP.rotationDegrees(randomRotation + Mth.lerp(partialTicks, entityIn.xRotO, entityIn.getXRot())));
+            //poseStack.mulPose(Axis.ZP.rotationDegrees(randomRotation + Mth.lerp(partialTicks, entityIn.xRotO, entityIn.getXRot())));
+            //poseStack.mulPose(Axis.ZP.rotationDegrees(randomRotation + Mth.lerp(partialTicks, entityIn.xRotO, entityIn.getXRot())));
+
+        }else {
+            poseStack.mulPose(Axis.XP.rotationDegrees((entityIn.tickCount+partialTicks) * 1));
+            poseStack.mulPose(Axis.YP.rotationDegrees((entityIn.tickCount+partialTicks) * 45));
+
+        }
+
+
+
         model.renderToBuffer(poseStack, vb, packedLightIn, OverlayTexture.NO_OVERLAY);
         poseStack.popPose();
         super.render(entityIn, entityYaw, partialTicks, poseStack, bufferIn, packedLightIn);

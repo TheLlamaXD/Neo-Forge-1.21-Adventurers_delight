@@ -1,4 +1,4 @@
-package net.dongurs.delightfull.entity.client;
+package net.dongurs.delightfull.entity.client.spirit;
 
 
 import com.mojang.blaze3d.vertex.PoseStack;

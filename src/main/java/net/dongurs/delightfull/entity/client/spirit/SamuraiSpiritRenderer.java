@@ -1,6 +1,7 @@
-package net.dongurs.delightfull.entity.client;
+package net.dongurs.delightfull.entity.client.spirit;
 
 import net.dongurs.delightfull.AdventurersDelight;
+import net.dongurs.delightfull.entity.client.ModModelLayers;
 import net.dongurs.delightfull.entity.custom.SamuraiSpiritEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;

@@ -2,6 +2,7 @@
 
   "item.delightfull.jade_gem": "Jade Gem",
   "item.delightfull.shade_horn": "Shade Horn",
+  "item.delightfull.spirit_key": "Spirit Key",
   "item.delightfull.spirit_spawn_egg": "Shade Spawn Egg",
   "item.delightfull.jade_sword": "Jade Katana",
   "item.delightfull.shuriken_throwable": "Shuriken",
@@ -18,6 +19,7 @@
   "block.delightfull.jade_tiles_block_slab": "Jade Tiles Slab",
   "block.delightfull.jade_tiles_block_stairs": "Jade Tiles Stairs",
   "block.delightfull.paper_wall_block": "Thick Paper Wall",
+  "block.delightfull.paper_light": "Paper Light",
   "block.delightfull.thin_paper_wall_block": "Thin Paper Wall",
   "block.delightfull.japanese_lantern_block": "Paper Lantern",
 

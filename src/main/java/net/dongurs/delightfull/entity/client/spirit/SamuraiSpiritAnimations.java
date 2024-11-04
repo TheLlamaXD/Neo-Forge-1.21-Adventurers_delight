@@ -1,4 +1,4 @@
-package net.dongurs.delightfull.entity.client;
+package net.dongurs.delightfull.entity.client.spirit;
 
 import net.minecraft.client.animation.AnimationChannel;
 import net.minecraft.client.animation.AnimationDefinition;

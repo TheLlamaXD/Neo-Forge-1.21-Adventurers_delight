@@ -11,4 +11,9 @@ public class ModModelLayers {
             ResourceLocation.fromNamespaceAndPath(AdventurersDelight.MOD_ID,"spirit"), "main");
 
 
+    public static final ModelLayerLocation KOI = new ModelLayerLocation(
+            ResourceLocation.fromNamespaceAndPath(AdventurersDelight.MOD_ID,"koi"), "main");
+
+
+
 }
