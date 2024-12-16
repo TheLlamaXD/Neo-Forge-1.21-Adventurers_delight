@@ -3,12 +3,18 @@ package net.dongurs.delightfull.entity.client.spirit;
 import net.dongurs.delightfull.AdventurersDelight;
 import net.dongurs.delightfull.entity.client.ModModelLayers;
 import net.dongurs.delightfull.entity.custom.SamuraiSpiritEntity;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.FlyingMob;
 
-public class SamuraiSpiritRenderer extends MobRenderer<SamuraiSpiritEntity, SamuraiSpiritModel<FlyingMob>> {
+import java.time.format.ResolverStyle;
+
+public class SamuraiSpiritRenderer extends MobRenderer<SamuraiSpiritEntity,SamuraiSpiritModel>{
+
+    private static final ResourceLocation BRAWLSTARS_SKIN = ResourceLocation.fromNamespaceAndPath(AdventurersDelight.MOD_ID,"textures/entity/spirit/shade_brawler.png");
+
     // Define how many frames the animation has
     private static final int TOTAL_FRAMES = 7;  // for example, 4 frames
     // Define the duration for each frame in ticks
@@ -19,19 +25,25 @@ public class SamuraiSpiritRenderer extends MobRenderer<SamuraiSpiritEntity, Samu
 
     public SamuraiSpiritRenderer(EntityRendererProvider.Context pContext) {
         super(pContext, new SamuraiSpiritModel(pContext.bakeLayer(ModModelLayers.SPIRIT)), 0.5f);
-        //this.addLayer(new SpiritPowerLayer(this, pContext.getModelSet()));
     }
 
     @Override
     public ResourceLocation getTextureLocation(SamuraiSpiritEntity samuraiSpiritEntity) {
-        // Calculate the current frame based on the game time
-        int tickCount = samuraiSpiritEntity.tickCount % ANIMATION_DURATION;  // Use modulo to prevent extra ticks on the last frame
-        int currentFrame = tickCount / FRAME_DURATION;
 
-        // Return the texture for the current frame
-        return ResourceLocation.fromNamespaceAndPath(
-                AdventurersDelight.MOD_ID,
-                "textures/entity/spirit/samurai_spirit_frame_" + currentFrame + ".png"
-        );
+        String s = ChatFormatting.stripFormatting(samuraiSpiritEntity.getName().getString());
+        if ("Brawler".equals(s)){
+            return BRAWLSTARS_SKIN;
+        }else {
+            // Calculate the current frame based on the game time
+            int tickCount = samuraiSpiritEntity.tickCount % ANIMATION_DURATION;  // Use modulo to prevent extra ticks on the last frame
+            int currentFrame = tickCount / FRAME_DURATION;
+
+            // Return the texture for the current frame
+            return ResourceLocation.fromNamespaceAndPath(
+                    AdventurersDelight.MOD_ID,
+                    "textures/entity/spirit/samurai_spirit_frame_" + currentFrame + ".png"
+            );
+        }
+
     }
 }

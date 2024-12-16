@@ -1,0 +1,33 @@
+{
+  "criteria": {
+    "shade_horn": {
+      "conditions": {
+        "items": [
+          {
+            "items": "delightfull:shade_horn"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "delightfull:textures/gui/advancements/jade_block.png",
+    "description": {
+      "translate": "advancements.shade_description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "delightfull:shade_horn"
+    },
+    "title": {
+      "translate": "advancements.shade_title"
+    }
+  },
+  "requirements": [
+    [
+      "shade_horn"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

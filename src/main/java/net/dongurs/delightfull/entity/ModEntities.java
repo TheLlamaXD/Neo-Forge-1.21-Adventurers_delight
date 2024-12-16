@@ -1,6 +1,7 @@
 package net.dongurs.delightfull.entity;
 
 import net.dongurs.delightfull.AdventurersDelight;
+import net.dongurs.delightfull.entity.client.shuriken.ShurikenProjectileRenderer;
 import net.dongurs.delightfull.entity.custom.KoiEntity;
 import net.dongurs.delightfull.entity.custom.SamuraiSpiritEntity;
 import net.dongurs.delightfull.entity.custom.ShurikenProjectileEntity;
@@ -29,10 +30,8 @@ public class ModEntities {
 
 
     public static final DeferredRegister<EntityType<?>> REGISTRY = DeferredRegister.create(Registries.ENTITY_TYPE, AdventurersDelight.MOD_ID);
-    public static final DeferredHolder<EntityType<?>, EntityType<ShurikenProjectileEntity>> SHURIKEN = register("shuriken",
+    public static final DeferredHolder<EntityType<?>, EntityType<ShurikenProjectileEntity>> SHURIKEN_PROJECTILE_ENTITY = register("shuriken_projectile_entity",
             EntityType.Builder.<ShurikenProjectileEntity>of(ShurikenProjectileEntity::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
-
-
 
     private static <T extends Entity> DeferredHolder<EntityType<?>, EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
         return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));

@@ -2,18 +2,16 @@ package net.dongurs.delightfull.entity.client.shuriken;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.dongurs.delightfull.entity.custom.ShurikenProjectileEntity;
-import net.minecraft.client.model.HierarchicalModel;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 
 
-public class ShurikenProjectileModel<T extends Entity> extends HierarchicalModel<ShurikenProjectileEntity> {
+public class ShurikenProjectileModel<T extends Entity> extends EntityModel<T> {
 
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath("delightfull", "model_shuriken_item"), "main");
     public final ModelPart whole_item;
@@ -39,37 +37,13 @@ public class ShurikenProjectileModel<T extends Entity> extends HierarchicalModel
     }
 
 
-
     @Override
     public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int rgb) {
         whole_item.render(poseStack, vertexConsumer, packedLight, packedOverlay, rgb);
     }
 
     @Override
-    public ModelPart root() {
-        return whole_item;
-    }
-
-    private void applyHeadRotation(float headYaw, float headPitch){
-        headYaw = Mth.clamp(headYaw, -30f,30f);
-        headPitch = Mth.clamp(headPitch, -25f,25f);
-
-        this.whole_item.yRot = headYaw * ((float)Math.PI / 180f);
-        this.whole_item.xRot = headPitch * ((float)Math.PI / 180f);
-
+    public void setupAnim(T entity, float v, float v1, float v2, float v3, float v4) {
 
     }
-
-    public void setupAnim(ShurikenProjectileEntity projectile, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-        this.root().getAllParts().forEach(ModelPart::resetPose);
-        this.applyHeadRotation(netHeadYaw,headPitch);
-
-        this.animate(projectile.flyState, ShurikenFlyAnimations.FLY , ageInTicks, 1f);
-        this.animateWalk(ShurikenFlyAnimations.FLY,limbSwing,limbSwingAmount,2f,2.5f);
-        if (!projectile.inGround()){
-            this.animateWalk(ShurikenFlyAnimations.FLY,limbSwing,limbSwingAmount,2f,2.5f);
-        }
-    }
-
-
 }

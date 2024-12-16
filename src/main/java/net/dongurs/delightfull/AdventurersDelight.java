@@ -1,12 +1,15 @@
 package net.dongurs.delightfull;
 
 import net.dongurs.delightfull.block.ModBlocks;
+import net.dongurs.delightfull.component.ModDataComponentTypes;
 import net.dongurs.delightfull.effects.ModEffects;
 import net.dongurs.delightfull.entity.ModEntities;
 import net.dongurs.delightfull.entity.client.koi.KoiRenderer;
+import net.dongurs.delightfull.entity.client.shuriken.ShurikenProjectileRenderer;
 import net.dongurs.delightfull.entity.client.spirit.SamuraiSpiritRenderer;
 import net.dongurs.delightfull.item.ModCreativeModeTabs;
 import net.dongurs.delightfull.item.ModItems;
+import net.dongurs.delightfull.potion.ModPotions;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import org.slf4j.Logger;
 
@@ -51,6 +54,8 @@ public class AdventurersDelight {
         ModEntities.register(modEventBus);
         ModEffects.register(modEventBus);
         ModEntities.REGISTRY.register(modEventBus);
+        ModPotions.register(modEventBus);
+        ModDataComponentTypes.register(modEventBus);
 
 
 
@@ -114,7 +119,6 @@ public class AdventurersDelight {
 
             EntityRenderers.register(ModEntities.SPIRIT.get(), SamuraiSpiritRenderer::new);
             EntityRenderers.register(ModEntities.KOI.get(), KoiRenderer::new);
-
         }
     }
 }

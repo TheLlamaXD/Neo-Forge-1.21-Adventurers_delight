@@ -1,138 +1,129 @@
 package net.dongurs.delightfull.entity.custom;
+
+import com.google.errorprone.annotations.Var;
+import net.dongurs.delightfull.entity.client.koi.KoiVariant;
+import net.dongurs.delightfull.entity.custom.koi_fish_classes.AbstractSchoolingKoi;
+import net.dongurs.delightfull.item.ModItems;
+import net.minecraft.Util;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AnimationState;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.PanicGoal;
-import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
-import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation;
-import net.minecraft.world.entity.animal.AbstractFish;
-import net.minecraft.world.entity.animal.WaterAnimal;
-import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.fluids.FluidType;
+import net.minecraft.world.level.ServerLevelAccessor;
+import org.jetbrains.annotations.Nullable;
+
+public class KoiEntity extends AbstractSchoolingKoi {
+    private static final EntityDataAccessor<Integer> VARIANT =
+            SynchedEntityData.defineId(KoiEntity.class, EntityDataSerializers.INT);
 
 
-public class KoiEntity extends WaterAnimal {
-
-    public static AnimationState idleAnimationState = new AnimationState();
-    public static AnimationState wobbleAnimationState = new AnimationState();
-
-    private int idleAnimationTimeout = 0;
-    private int wobbleAnimationTimeout = 0;
-
-    protected boolean canRandomSwim() {
-        return true;
-    }
-
-
-
-
-
-
-
-    public KoiEntity(EntityType<? extends WaterAnimal> entityType, Level level) {
+    public KoiEntity(EntityType<? extends KoiEntity> entityType, Level level) {
         super(entityType, level);
-        this.xpReward = 1;
     }
 
-    @Override
-    public boolean isPushedByFluid(FluidType type) {
-        double x = this.getX();
-        double y = this.getY();
-        double z = this.getZ();
-        Level world = this.level();
-        Entity entity = this;
-        return false;
+    public int getMaxSchoolSize() {
+        return 5;
     }
 
-    @Override
-    protected PathNavigation createNavigation(Level world) {
-        return new WaterBoundPathNavigation(this,world);
-    }
-
-    @Override
-    public boolean canDrownInFluidType(FluidType type) {
-        double x = this.getX();
-        double y = this.getY();
-        double z = this.getZ();
-        Level world = this.level();
-        Entity entity = this;
-        return false;
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-        if (this.level().isClientSide) {
-            this.setupAnimationStates();
-        }
-    }
-
-
-    @Override
-    protected void registerGoals() {
-        super.registerGoals();
-        this.goalSelector.addGoal(0, new RandomSwimmingGoal(this,1,2));
-    }
-
-
-    public void aiStep() {
-        if (!this.isInWater() && this.onGround() && this.verticalCollision) {
-            this.setDeltaMovement(this.getDeltaMovement().add((double)((this.random.nextFloat() * 2.0F - 1.0F) * 0.05F), 0.4000000059604645, (double)((this.random.nextFloat() * 2.0F - 1.0F) * 0.05F)));
-            this.setOnGround(false);
-            this.hasImpulse = true;
-            this.makeSound(this.getFlopSound());
-        }
-
-        super.aiStep();
-    }
-
-
-    public static AttributeSupplier.Builder createAttributes() {
-        return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 4.0)
-                .add(Attributes.MOVEMENT_SPEED,1)
-                .add(Attributes.FOLLOW_RANGE,8);
-
-    }
-
-    private void setupAnimationStates() {
-        if (this.idleAnimationTimeout <= 0) {
-            this.idleAnimationTimeout = 40;
-            this.idleAnimationState.start(this.tickCount);
-        } else {
-            --this.idleAnimationTimeout;
-        }
-
-        if (this.wobbleAnimationTimeout <= 0) {
-            this.wobbleAnimationTimeout = 20;
-            this.wobbleAnimationState.start(this.tickCount);
-        } else {
-            --this.wobbleAnimationTimeout;
-        }
+    public ItemStack getBucketItemStack() {
+        return new ItemStack(ModItems.KOI_BUCKET.get());
     }
 
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.TROPICAL_FISH_AMBIENT;
+        return SoundEvents.SALMON_AMBIENT;
     }
 
     protected SoundEvent getDeathSound() {
-        return SoundEvents.TROPICAL_FISH_DEATH;
+        return SoundEvents.SALMON_DEATH;
     }
 
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return SoundEvents.TROPICAL_FISH_HURT;
+        return SoundEvents.SALMON_HURT;
     }
 
     protected SoundEvent getFlopSound() {
-        return SoundEvents.TROPICAL_FISH_FLOP;
+        return SoundEvents.SALMON_FLOP;
+    }
+
+    //Variant
+
+
+
+
+    public void saveToBucketTag(ItemStack stack) {
+        super.saveToBucketTag(stack);
+        CustomData.update(DataComponents.BUCKET_ENTITY_DATA, stack, (compoundTag) -> {
+            compoundTag.putInt("BucketVariantTag", this.getTypeVariant());
+        });
+    }
+
+    public void loadFromBucketTag(CompoundTag tag) {
+        super.loadFromBucketTag(tag);
+        if (tag.contains("BucketVariantTag", 3)) {
+            this.setPackedVariant(tag.getInt("BucketVariantTag"));
+        }
+
     }
 
 
+
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(VARIANT,0);
+    }
+
+    private int getTypeVariant(){
+        return this.entityData.get(VARIANT);
+    }
+
+    public KoiVariant getVariant(){
+        return KoiVariant.byId(this.getTypeVariant() & 255);
+    }
+
+    private void setVariant(KoiVariant variant){
+        this.entityData.set(VARIANT, variant.getId() & 255);
+    }
+
+    private void setPackedVariant(int packedVariant) {
+        this.entityData.set(VARIANT, packedVariant);
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag compound) {
+        super.addAdditionalSaveData(compound);
+        compound.putBoolean("FromBucket", this.fromBucket());
+        compound.putInt("Variant",this.getTypeVariant());
+
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag compound) {
+        super.readAdditionalSaveData(compound);
+        this.setFromBucket(compound.getBoolean("FromBucket"));
+        this.entityData.set(VARIANT, compound.getInt("Variant"));
+
+    }
+
+    @Override
+    public @Nullable SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType,
+                                                  @Nullable SpawnGroupData spawnGroupData) {
+
+        KoiVariant variant = Util.getRandom(KoiVariant.values(), this.random);
+        this.setVariant(variant);
+        return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
+
+
+    }
 }

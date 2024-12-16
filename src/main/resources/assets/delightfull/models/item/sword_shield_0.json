@@ -1,0 +1,7 @@
+{
+  "parent": "delightfull:custom/katana_block",
+  "textures": {
+    "0": "delightfull:block/katana",
+    "particle": "minecraft:item/breeze_rod"
+  }
+}

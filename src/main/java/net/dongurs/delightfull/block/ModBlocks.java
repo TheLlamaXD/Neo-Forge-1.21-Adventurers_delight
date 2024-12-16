@@ -2,11 +2,14 @@ package net.dongurs.delightfull.block;
 
 import net.dongurs.delightfull.AdventurersDelight;
 import net.dongurs.delightfull.block.fancy_sand.FancySandBlock;
+import net.dongurs.delightfull.block.ink_blocks.MourningInkBlockClump;
 import net.dongurs.delightfull.item.ModItems;
+import net.minecraft.world.damagesource.DamageEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -21,14 +24,7 @@ public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(AdventurersDelight.MOD_ID);
 
 
-
-
-
-
-
-
-
-
+    
 
     public static final DeferredBlock<Block> JADE_BLOCK = registerBlock("jade_block",
             ()-> new Block(BlockBehaviour.Properties.of().sound(NETHER_BRICKS).strength(4f,4f).requiresCorrectToolForDrops()));
@@ -63,6 +59,19 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> JAPANESE_RUG_BLOCK = registerBlock("japanese_rug_block",
             ()-> new Block(BlockBehaviour.Properties.of().sound(WOOL).strength(0.5f,0.25f)));
+
+
+
+    public static final DeferredBlock<MourningInkBlockClump> MOURNING_INK_BLOCK = registerBlock("mourning_ink_block",
+            ()-> new MourningInkBlockClump(BlockBehaviour.Properties.of()));
+
+
+    public static final DeferredBlock<WaterlilyBlock> WATER_MOSS = registerBlock("water_moss",
+            ()-> new WaterlilyBlock(BlockBehaviour.Properties.of()
+                    .sound(MOSS)
+                    .noCollission()
+                    .speedFactor(0.5f)
+                    .strength(0.5f,0.1f)));
 
 
 

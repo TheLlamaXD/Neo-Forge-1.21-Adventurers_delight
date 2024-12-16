@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "paper_blocks",
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "X": {
+      "item": "paper"
+    }
+  },
+  "pattern": [
+    "X#X",
+    "###",
+    "X#X"
+  ],
+  "result": {
+    "count": 1,
+    "id": "delightfull:paper_wall_block"
+  }
+}

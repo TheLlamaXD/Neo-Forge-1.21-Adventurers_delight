@@ -5,32 +5,34 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.dongurs.delightfull.entity.custom.SamuraiSpiritEntity;
 
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.FlyingMob;
 
 
-public class SamuraiSpiritModel<S extends FlyingMob> extends HierarchicalModel<SamuraiSpiritEntity> {
-
+public class SamuraiSpiritModel extends HierarchicalModel<SamuraiSpiritEntity> {
 
     private final ModelPart wholeEntity;
     private final ModelPart spirit;
     private final ModelPart onlyHead;
-
-     final ModelPart handRight;
-     final ModelPart handLeft;
+    private final ModelPart hornR;
+    private final ModelPart hornL;
+    private final ModelPart handRight;
+    private final ModelPart handLeft;
 
     public SamuraiSpiritModel(ModelPart root) {
         this.wholeEntity = root.getChild("wholeEntity");
-        this.spirit = wholeEntity.getChild("spirit");
-        this.onlyHead = wholeEntity.getChild("spirit").getChild("onlyHead");
-
-
-        this.handRight = wholeEntity.getChild("spirit").getChild("handRight");
-        this.handLeft = wholeEntity.getChild("spirit").getChild("handLeft");
+        this.spirit = this.wholeEntity.getChild("spirit");
+        this.onlyHead = this.spirit.getChild("onlyHead");
+        this.hornR = this.onlyHead.getChild("hornR");
+        this.hornL = this.onlyHead.getChild("hornL");
+        this.handRight = this.spirit.getChild("handRight");
+        this.handLeft = this.spirit.getChild("handLeft");
     }
 
     public static LayerDefinition createBodyLayer() {
@@ -42,10 +44,15 @@ public class SamuraiSpiritModel<S extends FlyingMob> extends HierarchicalModel<S
         PartDefinition spirit = wholeEntity.addOrReplaceChild("spirit", CubeListBuilder.create(), PartPose.offset(0.0F, 7.0F, -1.36F));
 
         PartDefinition onlyHead = spirit.addOrReplaceChild("onlyHead", CubeListBuilder.create().texOffs(0, 28).addBox(-4.0F, -6.0F, -2.36F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.0F))
+                .texOffs(36, 17).addBox(-6.0F, -3.0F, -2.46F, 12.0F, 4.0F, 0.0F, new CubeDeformation(0.0F))
                 .texOffs(0, 0).addBox(-4.5F, -6.5F, -2.86F, 9.0F, 9.0F, 9.0F, new CubeDeformation(0.0F))
                 .texOffs(0, 6).addBox(2.0F, -5.0F, -2.46F, 3.0F, 3.0F, 0.0F, new CubeDeformation(0.0F))
                 .texOffs(0, 6).addBox(-5.0F, -3.0F, -2.46F, 3.0F, 3.0F, 0.0F, new CubeDeformation(0.0F))
-                .texOffs(0, 44).addBox(-6.0F, -16.0F, 1.64F, 12.0F, 20.0F, 0.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -2.0F, -1.64F));
+                .texOffs(0, 44).addBox(-6.0F, -16.0F, 1.64F, 12.0F, 20.0F, 0.0F, new CubeDeformation(0.0F))
+                .texOffs(32, 32).addBox(-5.0F, -4.0F, 6.64F, 10.0F, 0.0F, 5.0F, new CubeDeformation(0.0F))
+                .texOffs(47, 26).addBox(-5.0F, -4.0F, 6.64F, 0.0F, 1.0F, 5.0F, new CubeDeformation(0.0F))
+                .texOffs(47, 26).addBox(5.0F, -4.0F, 6.64F, 0.0F, 1.0F, 5.0F, new CubeDeformation(0.0F))
+                .texOffs(24, 50).addBox(-5.0F, -7.0F, -3.36F, 10.0F, 4.0F, 10.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -2.0F, -1.64F));
 
         PartDefinition hornR = onlyHead.addOrReplaceChild("hornR", CubeListBuilder.create().texOffs(0, 0).addBox(5.0F, -4.0F, -1.0F, 2.0F, 4.0F, 2.0F, new CubeDeformation(0.0F))
                 .texOffs(4, 0).addBox(4.0F, -4.0F, -1.0F, 1.0F, 0.0F, 2.0F, new CubeDeformation(0.0F))
@@ -55,15 +62,18 @@ public class SamuraiSpiritModel<S extends FlyingMob> extends HierarchicalModel<S
         PartDefinition hornL = onlyHead.addOrReplaceChild("hornL", CubeListBuilder.create().texOffs(0, 28).addBox(-7.0F, -4.0F, -1.0F, 2.0F, 4.0F, 2.0F, new CubeDeformation(0.0F))
                 .texOffs(4, 6).addBox(-5.0F, -4.0F, -1.0F, 1.0F, 0.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(3.0F, -6.0F, -1.36F));
 
-        PartDefinition handRight = spirit.addOrReplaceChild("handRight", CubeListBuilder.create().texOffs(33, 7).addBox(0.0F, -2.0F, -1.5F, 3.0F, 2.0F, 0.0F, new CubeDeformation(0.0F))
-                .texOffs(24, 28).addBox(0.0F, 0.0F, -1.5F, 3.0F, 4.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(6.0F, -1.0F, -2.5F));
+        PartDefinition handRight = spirit.addOrReplaceChild("handRight", CubeListBuilder.create().texOffs(27, 7).addBox(-3.0F, -2.0F, -1.5F, 3.0F, 2.0F, 0.0F, new CubeDeformation(0.0F))
+                .texOffs(27, 0).addBox(-3.0F, 0.0F, -1.5F, 3.0F, 4.0F, 3.0F, new CubeDeformation(0.0F))
+                .texOffs(51, 7).addBox(-3.0F, 4.0F, -1.5F, 3.0F, 2.0F, 3.0F, new CubeDeformation(0.2F))
+                .texOffs(32, 37).addBox(-3.0F, -2.0F, -1.5F, 3.0F, 7.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(-5.0F, -1.0F, -0.5F));
 
         PartDefinition handLeft = spirit.addOrReplaceChild("handLeft", CubeListBuilder.create().texOffs(27, 7).addBox(-3.0F, -2.0F, -1.5F, 3.0F, 2.0F, 0.0F, new CubeDeformation(0.0F))
-                .texOffs(27, 0).addBox(-3.0F, 0.0F, -1.5F, 3.0F, 4.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(-6.0F, -1.0F, -2.5F));
+                .texOffs(27, 0).mirror().addBox(-3.0F, 0.0F, -1.5F, 3.0F, 4.0F, 3.0F, new CubeDeformation(0.0F)).mirror(false)
+                .texOffs(51, 7).addBox(-3.0F, 4.0F, -1.5F, 3.0F, 2.0F, 3.0F, new CubeDeformation(0.2F))
+                .texOffs(32, 37).mirror().addBox(-3.0F, -2.0F, -1.5F, 3.0F, 7.0F, 3.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(8.0F, -1.0F, -0.5F));
 
         return LayerDefinition.create(meshdefinition, 64, 64);
     }
-
 
 
     @Override

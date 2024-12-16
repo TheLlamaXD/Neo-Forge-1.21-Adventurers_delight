@@ -1,6 +1,7 @@
 package net.dongurs.delightfull.entity.custom;
 
 import net.dongurs.delightfull.effects.ModEffects;
+import net.dongurs.delightfull.entity.custom.koi_fish_classes.AbstractKoiFish;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -19,10 +20,14 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.MoveControl;
+import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.animal.Cat;
+import net.minecraft.world.entity.animal.allay.Allay;
+import net.minecraft.world.entity.monster.Guardian;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.player.Player;
@@ -79,12 +84,15 @@ public class SamuraiSpiritEntity extends FlyingMob{
     protected void registerGoals() {
         super.registerGoals();
         this.goalSelector.addGoal(0,   new FloatGoal(this));
-        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<Player>(this, Player.class, false));
-        this.goalSelector.addGoal(10,  new LookAtPlayerGoal(this, Mob.class, 8.0F));
-        this.goalSelector.addGoal(9,   new LookAtPlayerGoal(this, Player.class, 3.0F, 1.0F));
+        this.targetSelector.addGoal(7, new NearestAttackableTargetGoal<Player>(this, Player.class, false));
+        this.goalSelector.addGoal(6,  new LookAtPlayerGoal(this, Mob.class, 8.0F));
+        this.goalSelector.addGoal(5,   new LookAtPlayerGoal(this, Player.class, 3.0F, 1.0F));
         this.goalSelector.addGoal(2,   new SamuraiSpiritRandomMoveGoal());
-        this.goalSelector.addGoal(1,   new SamuraiSpiritChargeAttackGoal());
-        this.goalSelector.addGoal(1,   new ApplyStrengthToNearbyZombiesGoal(this,20));
+        this.goalSelector.addGoal(4,   new SamuraiSpiritChargeAttackGoal());
+        this.goalSelector.addGoal(3,   new ApplyStrengthToNearbyZombiesGoal(this,20));
+        //this.goalSelector.addGoal(1, new AvoidEntityGoal(this, KoiEntity.class, 10.0F, 2.0, 2.5));
+
+
         //this.goalSelector.addGoal(6, new ApplyWeaknessToNearbyPlayerGoal(this ,20));
 
 

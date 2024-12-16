@@ -7,6 +7,7 @@ package net.dongurs.delightfull.item.sword;
 
 import java.util.List;
 
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
@@ -34,9 +35,17 @@ public class SwordItemWithAttackReach extends TieredItem {
         super(tier, properties.component(DataComponents.TOOL, createToolProperties()));
     }
 
-    public SwordItemWithAttackReach(Tier p_tier, Item.Properties p_properties, Tool toolComponentData) {
-        super(p_tier, p_properties.component(DataComponents.TOOL, toolComponentData));
+    /*
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        tooltipComponents.add(Component.translatable("tooltip.delightfull.jade_sword_shift"));
+        if (Screen.hasShiftDown()){
+            tooltipComponents.add(Component.translatable("tooltip.delightfull.jade_sword_lore"));
+        }
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
+
+     */
 
     public static Tool createToolProperties() {
         return new Tool(List.of(Rule.minesAndDrops(List.of(Blocks.COBWEB), 15.0F), Rule.overrideSpeed(BlockTags.SWORD_EFFICIENT, 1.5F)), 1.0F, 2);

@@ -13,11 +13,11 @@ import net.minecraft.world.item.armortrim.TrimPattern;
 import net.neoforged.neoforge.registries.DeferredItem;
 
 public class ModTrimPatterns {
-    public static final ResourceKey<TrimPattern> KAUPEN = ResourceKey.create(Registries.TRIM_PATTERN,
+    public static final ResourceKey<TrimPattern> SAMURAI = ResourceKey.create(Registries.TRIM_PATTERN,
             ResourceLocation.fromNamespaceAndPath(AdventurersDelight.MOD_ID, "delightfull"));
 
     public static void bootstrap(BootstrapContext<TrimPattern> context) {
-        register(context, ModItems.SAMURAI_SMITHING_TEMPLATE, KAUPEN);
+        register(context, ModItems.SAMURAI_SMITHING_TEMPLATE, SAMURAI);
     }
 
     private static void register(BootstrapContext<TrimPattern> context, DeferredItem<Item> item, ResourceKey<TrimPattern> key) {

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "jade_stairs",
+  "key": {
+    "#": {
+      "item": "delightfull:jade_polished_block"
+    }
+  },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "result": {
+    "count": 4,
+    "id": "delightfull:jade_polished_block_stairs"
+  }
+}

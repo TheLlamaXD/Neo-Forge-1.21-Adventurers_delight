@@ -15,7 +15,7 @@ public class ModEntityRenderers {
 
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(ModEntities.SHURIKEN.get(), ShurikenProjectileRenderer::new);
+        event.registerEntityRenderer(ModEntities.SHURIKEN_PROJECTILE_ENTITY.get(), ShurikenProjectileRenderer::new);
     }
 
 

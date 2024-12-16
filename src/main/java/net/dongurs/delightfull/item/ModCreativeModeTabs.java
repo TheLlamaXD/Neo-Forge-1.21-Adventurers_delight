@@ -6,6 +6,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -31,17 +32,16 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModBlocks.JADE_POLISHED_BLOCK);
                         pOutput.accept(ModBlocks.JADE_POLISHED_BLOCK_STAIRS);
                         pOutput.accept(ModBlocks.JADE_POLISHED_BLOCK_SLAB);
+                        pOutput.accept(ModBlocks.WATER_MOSS);
                         pOutput.accept(ModBlocks.PAPER_WALL_BLOCK);
                         pOutput.accept(ModBlocks.THIN_PAPER_WALL_BLOCK);
-                        pOutput.accept(ModBlocks.FANCY_SAND);
-                        pOutput.accept(ModBlocks.JAPANESE_RUG_BLOCK);
-                        pOutput.accept(ModBlocks.JAPANESE_RUG);
                         pOutput.accept(ModBlocks.JAPANESE_LANTERN_BLOCK_DEFERRED_BLOCK);
                         pOutput.accept(ModItems.JADE_GEM);
                         pOutput.accept(ModItems.SHADE_HORN);
                         pOutput.accept(ModItems.SAMURAI_KEY);
                         pOutput.accept(ModItems.SPIRIT_SPAWN_EGG);
                         pOutput.accept(ModItems.KOI_SPAWN_EGG);
+                        pOutput.accept(ModItems.KOI_BUCKET);
                         pOutput.accept(ModItems.JADE_SWORD);
                         pOutput.accept(ModItems.SHURIKEN_THROWABLE);
                     })

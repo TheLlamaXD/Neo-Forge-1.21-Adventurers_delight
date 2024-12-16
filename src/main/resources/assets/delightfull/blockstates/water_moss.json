@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "delightfull:block/water_moss"
+      },
+      {
+        "model": "delightfull:block/water_moss",
+        "y": 90
+      },
+      {
+        "model": "delightfull:block/water_moss",
+        "y": 180
+      },
+      {
+        "model": "delightfull:block/water_moss",
+        "y": 270
+      }
+    ]
+  }
+}

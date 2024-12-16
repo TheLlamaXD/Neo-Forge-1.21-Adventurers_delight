@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "delightfull:block/mourning_ink_block"
+      },
+      {
+        "model": "delightfull:block/mourning_ink_block",
+        "y": 90
+      },
+      {
+        "model": "delightfull:block/mourning_ink_block",
+        "y": 180
+      },
+      {
+        "model": "delightfull:block/mourning_ink_block",
+        "y": 270
+      }
+    ]
+  }
+}
