@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "paper_blocks",
+  "key": {
+    "#": {
+      "item": "minecraft:paper"
+    },
+    "R": {
+      "item": "minecraft:red_dye"
+    },
+    "L": {
+      "item": "minecraft:lantern"
+    }
+  },
+  "pattern": [
+    "#R#",
+    "#L#",
+    "#R#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "delightfull:japanese_lantern_block"
+  }
+}

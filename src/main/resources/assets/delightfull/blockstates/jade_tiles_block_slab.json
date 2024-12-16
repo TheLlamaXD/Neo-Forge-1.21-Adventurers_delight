@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "delightfull:block/jade_tiles_block_slab"
+    },
+    "type=top": {
+      "model": "delightfull:block/jade_tiles_block_slab_top"
+    },
+    "type=double": {
+      "model": "delightfull:block/jade_tiles_block_slab_full"
+    }
+  }
+}

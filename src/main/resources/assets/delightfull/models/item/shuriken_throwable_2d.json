@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "delightfull:item/shuriken_item_2d"
+  }
+}

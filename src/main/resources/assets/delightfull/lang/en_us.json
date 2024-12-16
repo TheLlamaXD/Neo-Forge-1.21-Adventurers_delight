@@ -1,0 +1,84 @@
+{
+
+  "item.delightfull.jade_gem": "Jade Gem",
+  "item.delightfull.shade_horn": "Shade Horn",
+  "item.delightfull.spirit_key": "Spirit Key",
+  "item.delightfull.spirit_spawn_egg": "Shade Spawn Egg",
+  "item.delightfull.koi_spawn_egg": "Koi Spawn Egg",
+  "item.delightfull.jade_sword": "Jade Katana",
+  "item.delightfull.shuriken_throwable": "Shuriken",
+  "item.delightfull.koi_bucket": "Bucket of Koi",
+
+  "item.minecraft.potion.effect.haunted_potion": "Fatigue Potion",
+  "item.minecraft.splash_potion.effect.haunted_potion": "Fatigue Splash Potion",
+  "item.minecraft.lingering_potion.effect.haunted_potion": "Fatigue Lingering Potion",
+  "item.minecraft.tipped_arrow.effect.haunted_potion": "Fatigue Arrow",
+
+  "item.minecraft.potion.effect.strong_haunted_potion": "Fatigue Potion",
+  "item.minecraft.splash_potion.effect.strong_haunted_potion": "Fatigue Splash Potion",
+  "item.minecraft.lingering_potion.effect.strong_haunted_potion": "Fatigue Lingering Potion",
+  "item.minecraft.tipped_arrow.effect.strong_haunted_potion": "Fatigue Arrow",
+
+
+
+
+  "block.delightfull.jade_block": "Jade Roof Tiles",
+  "block.delightfull.jade_block_stairs": "Jade Roof Stairs",
+  "block.delightfull.jade_block_slab": "Jade Roof Slab",
+  "block.delightfull.jade_polished_block": "Polished Jade Tiles",
+  "block.delightfull.jade_polished_block_slab": "Polished Jade Tiles Slab",
+  "block.delightfull.jade_polished_block_stairs": "Polished Jade Tiles Stairs",
+  "block.delightfull.jade_tiles_block": "Jade Tiles",
+  "block.delightfull.jade_tiles_block_slab": "Jade Tiles Slab",
+  "block.delightfull.jade_tiles_block_stairs": "Jade Tiles Stairs",
+  "block.delightfull.paper_wall_block": "Thick Paper Wall",
+  "block.delightfull.paper_light": "Paper Light",
+  "block.delightfull.thin_paper_wall_block": "Thin Paper Wall",
+  "block.delightfull.japanese_lantern_block": "Paper Lantern",
+  "block.delightfull.mourning_ink_block": "Mourning Ink Clump",
+
+
+
+  "tooltip.delightfull.jade_sword_lore": "§7Crafted by Masters of Smithing Forgotten by Time",
+  "tooltip.delightfull.jade_sword_shift": "§9Press §fShift §9for Info",
+
+
+  "tooltip.delightfull.bucket.variant": "§9Variant:",
+  "tooltip.delightfull.bucket.spoted": " §7Patched",
+  "tooltip.delightfull.bucket.albino": " §7Silver",
+  "tooltip.delightfull.bucket.dark": " §7Inky",
+  "tooltip.delightfull.bucket.dark_fade": " §7Dark Spill",
+  "tooltip.delightfull.bucket.random": " §7Random",
+
+
+  "effect.delightfull.haunted": "Fatigue",
+
+
+
+
+
+  "entity.delightfull.spirit": "Shade",
+  "entity.delightfull.koi": "Koi",
+
+
+
+
+  "advancements.shade_description": "Optain a Shade Horn",
+  "advancements.shade_title": "Shady Business",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  "itemGroup.delightfull.adventurers_delight_tab": "Adventurer's Delight"
+}
