@@ -1,0 +1,33 @@
+{
+  "parent": "delightfull:jade_temple/jade_temple",
+  "criteria": {
+    "jade_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": "delightfull:jade_gem"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.jade_item.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "delightfull:jade_gem"
+    },
+    "title": {
+      "translate": "advancements.jade_item.title"
+    }
+  },
+  "requirements": [
+    [
+      "jade_item"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

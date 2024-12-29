@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:stonecutting",
+  "group": "jade_blocks",
+  "ingredient": {
+    "item": "delightfull:jade_block"
+  },
+  "result": {
+    "count": 2,
+    "id": "delightfull:jade_block_slab"
+  }
+}

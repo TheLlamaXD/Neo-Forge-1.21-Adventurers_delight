@@ -1,0 +1,33 @@
+{
+  "parent": "delightfull:jade_temple/get_shuriken",
+  "criteria": {
+    "get_jade_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "delightfull:jade_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.get_jade_sword.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "delightfull:jade_sword"
+    },
+    "title": {
+      "translate": "advancements.get_jade_sword.title"
+    }
+  },
+  "requirements": [
+    [
+      "get_jade_sword"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

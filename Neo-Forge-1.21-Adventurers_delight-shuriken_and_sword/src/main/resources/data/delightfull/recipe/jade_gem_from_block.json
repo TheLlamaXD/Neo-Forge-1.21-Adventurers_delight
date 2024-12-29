@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "jade",
+  "ingredients": [
+    {
+      "item": "delightfull:jade_block"
+    }
+  ],
+  "result": {
+    "id": "delightfull:jade_gem",
+    "count": 9
+  }
+}

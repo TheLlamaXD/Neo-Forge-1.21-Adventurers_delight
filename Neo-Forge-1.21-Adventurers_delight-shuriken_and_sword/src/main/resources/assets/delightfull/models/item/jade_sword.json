@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:item/handheld",
+    "loader": "neoforge:separate_transforms",
+    "base": {
+      "parent": "delightfull:item/katana"
+    },
+    "perspectives": {
+      "gui": {
+        "parent": "delightfull:item/jade_sword_2d"
+      },
+      "ground": {
+        "parent": "delightfull:item/jade_sword_2d"
+      },
+      "fixed": {
+        "parent": "delightfull:item/jade_sword_2d"
+      }
+    },
+  "overrides": [
+    {
+      "predicate": {
+        "blocking": 1
+      },
+      "model": "delightfull:item/katana_block"
+    }
+  ]
+  }
+
+
+
+
+
+

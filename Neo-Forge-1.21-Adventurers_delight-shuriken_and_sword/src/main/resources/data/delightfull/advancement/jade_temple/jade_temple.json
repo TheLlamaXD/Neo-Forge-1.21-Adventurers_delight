@@ -1,0 +1,35 @@
+{
+  "display": {
+    "icon": {
+      "id": "delightfull:thin_paper_wall_block"
+    },
+    "title":{
+      "translate": "advancements.jade_temple.title"
+    },
+    "description":{
+      "translate": "advancements.jade_temple.description"
+    },
+
+    "background": "delightfull:textures/gui/advancements/jade_block.png",
+    "frame": "task"
+  },
+  "criteria": {
+    "find_temple": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "structures": [
+              "delightfull:samurai_temple"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "find_temple"
+    ]
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "parent": "delightfull:jade_temple/jade_temple",
+  "criteria": {
+    "shade_horn": {
+      "conditions": {
+        "items": [
+          {
+            "items": "delightfull:shade_horn"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.shade.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "delightfull:shade_horn"
+    },
+    "title": {
+      "translate": "advancements.shade.title"
+    }
+  },
+  "requirements": [
+    [
+      "shade_horn"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

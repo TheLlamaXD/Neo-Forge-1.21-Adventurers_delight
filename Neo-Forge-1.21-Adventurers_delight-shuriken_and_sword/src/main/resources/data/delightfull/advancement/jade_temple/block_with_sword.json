@@ -1,0 +1,46 @@
+{
+  "parent": "delightfull:jade_temple/get_jade_sword",
+  "criteria": {
+    "deflected_projectile_with_jade_sword": {
+      "conditions": {
+        "player": {
+          "equipment": {
+            "mainhand": {
+              "items": "delightfull:jade_sword"
+            }
+          }
+        },
+        "damage": {
+          "type": {
+            "tags": [
+              {
+                "expected": true,
+                "id": "minecraft:is_projectile"
+              }
+            ]
+          },
+          "blocked": true
+        }
+      },
+      "trigger": "minecraft:entity_hurt_player"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.block_with_jade_sword.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:shield"
+    },
+    "title": {
+      "translate": "advancements.block_with_jade_sword.title"
+    }
+  },
+  "requirements": [
+    [
+      "deflected_projectile_with_jade_sword"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

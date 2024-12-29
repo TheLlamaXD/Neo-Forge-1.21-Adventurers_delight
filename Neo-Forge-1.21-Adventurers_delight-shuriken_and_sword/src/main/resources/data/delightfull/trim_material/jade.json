@@ -1,0 +1,9 @@
+{
+  "asset_name": "jade",
+  "description": {
+    "color": "#5cce84",
+    "translate": "trim_material.delightfull.jade"
+  },
+  "ingredient": "delightfull:jade_gem",
+  "item_model_index": 0.7
+}

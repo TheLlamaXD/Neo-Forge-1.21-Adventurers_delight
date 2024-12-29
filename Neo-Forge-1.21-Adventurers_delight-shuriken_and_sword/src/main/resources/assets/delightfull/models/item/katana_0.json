@@ -1,0 +1,7 @@
+{
+  "parent": "delightfull:item/jade_sword_block",
+  "textures": {
+    "0": "delightfull:item/jade_sword_3d",
+    "particle": "delightfull:item/jade_sword_3d"
+  }
+}

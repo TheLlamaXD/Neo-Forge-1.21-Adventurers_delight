@@ -1,0 +1,38 @@
+{
+  "parent": "delightfull:jade_temple/jade_temple",
+  "criteria": {
+    "get_all_koi": {
+      "conditions": {
+        "items": [
+          {
+            "items": "delightfull:koi_bucket",
+            "components": {
+              "minecraft:bucket_entity_data": {
+                "BucketVariantTag": 1
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.get_koi.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "delightfull:koi_bucket"
+    },
+    "title": {
+      "translate": "advancements.get_koi.title"
+    }
+  },
+  "requirements": [
+    [
+      "get_all_koi"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

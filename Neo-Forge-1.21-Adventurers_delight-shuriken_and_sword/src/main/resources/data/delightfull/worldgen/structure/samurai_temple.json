@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:jigsaw",
+  "start_pool": "delightfull:samurai_temple",
+  "size": 1,
+  "max_distance_from_center": 64,
+  "spawn_overrides": {},
+  "step": "strongholds",
+  "terrain_adaptation": "bury",
+  "start_height": {
+    "type": "minecraft:biased_to_bottom",
+    "min_inclusive": {
+      "absolute": -20
+    },
+    "max_inclusive": {
+      "absolute": 10
+    }
+  },
+  "biomes": "cherry_grove",
+  "use_expansion_hack": false
+}

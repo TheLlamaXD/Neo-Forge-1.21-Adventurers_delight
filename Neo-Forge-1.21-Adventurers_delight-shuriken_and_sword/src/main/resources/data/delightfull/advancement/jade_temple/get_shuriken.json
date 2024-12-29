@@ -1,0 +1,33 @@
+{
+  "parent": "delightfull:jade_temple/jade_temple",
+  "criteria": {
+    "get_shuriken": {
+      "conditions": {
+        "items": [
+          {
+            "items": "delightfull:shuriken_throwable"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.get_shuriken.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "delightfull:shuriken_throwable"
+    },
+    "title": {
+      "translate": "advancements.get_shuriken.title"
+    }
+  },
+  "requirements": [
+    [
+      "get_shuriken"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "paper_blocks",
+  "key": {
+    "#": {
+      "item": "delightfull:paper_wall_block"
+    }
+  },
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 16,
+    "id": "delightfull:thin_paper_wall_block"
+  }
+}

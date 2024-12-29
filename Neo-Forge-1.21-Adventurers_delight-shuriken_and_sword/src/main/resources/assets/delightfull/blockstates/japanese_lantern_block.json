@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "hanging=false": {
+      "model": "delightfull:block/japanese_lantern"
+    },
+    "hanging=true": {
+      "model": "delightfull:block/japanese_lantern_hanging"
+
+    }
+  }
+}
